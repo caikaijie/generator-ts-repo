@@ -1,0 +1,103 @@
+{
+    "name": "generator-ts-repo",
+    "version": "0.0.2",
+    "description": "Generate a git repository with Node and Typescript.",
+    "homepage": "",
+    "author": {
+        "name": "caikaijie",
+        "email": "caikaijie@gmail.com"
+    },
+    "files": [
+        "generators",
+        "templates",
+        ".vscode",
+        ".editorconfig",
+        ".eslintignore",
+        ".eslintrc.js",
+        ".gitattributes",
+        ".gitignore",
+        ".prettierrc",
+        ".travis.yml",
+        "commitlint.config.js",
+        "jest.config.js",
+        "LICENSE",
+        "tsconfig.json"
+    ],
+    "main": "generators/index.js",
+    "keywords": [
+        "node",
+        "typescript",
+        "yeoman-generator"
+    ],
+    "devDependencies": {
+        "@commitlint/cli": "^8.2.0",
+        "@commitlint/config-conventional": "^8.2.0",
+        "@types/fs-extra": "^8.0.1",
+        "@types/inquirer-npm-name": "^3.0.1",
+        "@types/jest": "^24.0.23",
+        "@types/treeify": "^1.0.0",
+        "@types/yeoman-assert": "^3.1.1",
+        "@types/yeoman-generator": "^3.1.4",
+        "@types/yeoman-test": "^2.0.3",
+        "@types/yosay": "^0.0.29",
+        "@typescript-eslint/eslint-plugin": "^2.11.0",
+        "@typescript-eslint/parser": "^2.11.0",
+        "commitizen": "^4.0.3",
+        "conventional-changelog-cli": "^2.0.28",
+        "cz-conventional-changelog": "3.0.2",
+        "del-cli": "^3.0.0",
+        "directory-tree": "^2.2.4",
+        "eslint": "^6.7.2",
+        "eslint-config-prettier": "^6.7.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "husky": "^3.0.9",
+        "jest": "^24.8.0",
+        "lint-staged": "^9.4.3",
+        "prettier": "^1.19.1",
+        "treeify": "^1.1.0",
+        "ts-jest": "^24.2.0",
+        "typescript": "^3.7.3",
+        "yeoman-assert": "^3.1.0",
+        "yeoman-test": "^2.0.0"
+    },
+    "engines": {
+        "node": ">=8.6.0"
+    },
+    "dependencies": {
+        "chalk": "^3.0.0",
+        "fs-extra": "^8.1.0",
+        "inquirer-npm-name": "^3.0.0",
+        "sort-package-json": "^1.31.0",
+        "yeoman-generator": "^4.2.0",
+        "yosay": "^2.0.2"
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": [
+            "eslint --fix",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsc --noEmit && lint-staged",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "scripts": {
+        "lint": "eslint --fix src/**/* __tests__/**/*",
+        "test": "jest",
+        "prebuild": "npm run lint",
+        "build": "del-cli generators && tsc --outDir generators",
+        "build:debug": "del-cli generators && tsc --sourceMap --outDir generators",
+        "watch": "del-cli generators && tsc -w --outDir generators",
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+        "commit": "git-cz"
+    },
+    "repository": "caikaijie/generator-ts-repo",
+    "license": "MIT",
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}

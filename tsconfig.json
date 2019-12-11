@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+      "target": "ES2017",
+      "module": "commonjs",
+      "strict": true,
+      "declaration": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "removeComments": true,
+      "rootDir": "./src",
+      "types": [
+          "node",
+          "jest"
+      ]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/templates",
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "**/__*__",
+    ]
+}

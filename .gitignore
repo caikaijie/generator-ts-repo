@@ -1,0 +1,12 @@
+node_modules
+coverage
+*.log
+.*
+
+!.git*
+!.editorconfig
+!.vscode
+!.eslint*
+!.prettier*
+!.travis.yml
+!.yo-rc.json
